@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
-import * as Google from 'expo-google-app-auth';
+import { StyleSheet, Text, View, Image, Button } from 'react-native'
+import * as Google from 'expo-google-app-auth'
 import { key } from '../supersecret'
+import StripeButton from './stripeButton.js'
+
 
 export default function LoginPage({ navigation, route, userData }){
   const [buttonDisabled, onButtonPress] = React.useState(false);
@@ -52,6 +54,9 @@ export default function LoginPage({ navigation, route, userData }){
       </View>
       <View style={styles.button}>
         <Button color='#726D9B' uppercase={false} title="Sign Up with Google" onPress={() => signIn('B')} />
+      </View>
+      <View>
+        <StripeButton />
       </View>
     </View>
   )

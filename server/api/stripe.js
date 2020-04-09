@@ -6,7 +6,7 @@ module.exports = async function (fastify) {
 
     // Takes in user id and auth code as params, saves user's Stripe account token to DB 
     // https://stripe.com/docs/connect/collect-then-transfer-guide
-    fastify.get("/createConnect/:id/:code", (req, res) => {
+    fastify.post("/createConnect/:id/:code", (req, res) => {
         const code =  req.params.code
 
         stripe.oauth.token({

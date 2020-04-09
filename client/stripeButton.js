@@ -5,20 +5,22 @@ import { AuthSession } from 'expo';
 export default class StripeButton extends React.Component {
   state = {
     result: null,
+    redirectUrl: null,
   };
 
   render() {
     return (
       <View>
         <Button style = {styles.button} title="Stripe" onPress={this._handlePressAsync} />
+        <Text>{this.state.redirectUrl}</Text>
         {this.state.result ? <Text> {JSON.stringify(this.state.result)} </Text> : null}
         </View>
     );
   }
 
   _handlePressAsync = async () => {
-    let redirectUrl = AuthSession.getRedirectUrl();
-    console.log(redirectUrl); 
+    let redirectUrl = AuthSession.getRedirectUrl(); 
+    this.setState({ redirectUrl })
     let result = await AuthSession.startAsync(
        {
         
